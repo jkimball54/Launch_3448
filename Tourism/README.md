@@ -10,7 +10,7 @@
 </br>The **New** route offers a form to create a new object.
 </br>The **Create** route creates the new object on the server.
 3. List all of the RESTful routes for the `employee` entity. Make sure to include the Route Name, Path, and HTTP Method for each of the routes. (2 points)
-</br>
+
 | Route Name | Path               | Http Method | Purpose                                   |
 |------------|--------------------|-------------|-------------------------------------------|
 | Index      | /employee          | GET         | displays all employees                    |
@@ -20,6 +20,7 @@
 | Edit       | /employee/:id/edit | GET         | offers form to edit an employee's details |
 | Update     | /employee/:id      | PATCH       | updates the employee's details on server  |
 | destroy    | /employee/:id      | DELETE      | deletes the specific employee             |
+
 </br>
 For the following three questions, explain both how to fix the error/bug and why the part of the code that was broken is important. (2 points each)
 
