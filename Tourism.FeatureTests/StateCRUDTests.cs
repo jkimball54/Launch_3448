@@ -34,6 +34,27 @@ namespace Tourism.FeatureTests
             Assert.DoesNotContain("California", html);
         }
 
+        [Fact]
+        public async void Show_ReturnsSingleState()
+        {
+            //Arrange
+            var context = GetDbContext();
+            var client = _factory.CreateClient();
+            context.States.Add(new State { Name = "Iowa", Abbreviation = "IA" });
+            context.States.Add(new State { Name = "Colorado", Abbreviation = "CO" });
+            context.SaveChanges();
+            //Act
+            var response = await client.GetAsync("/states/1");
+            var html = await response.Content.ReadAsStringAsync();
+            //Assert
+            response.EnsureSuccessStatusCode();
+            Assert.Contains("Iowa", html);
+            Assert.Contains("IA", html);
+            Assert.DoesNotContain("CO", html);
+            Assert.DoesNotContain("Colorado", html);
+
+        }
+
         private TourismContext GetDbContext()
         {
             var optionsBuilder = new DbContextOptionsBuilder<TourismContext>();
@@ -45,5 +66,7 @@ namespace Tourism.FeatureTests
 
             return context;
         }
+
+        
     }
 }
